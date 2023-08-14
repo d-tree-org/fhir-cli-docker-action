@@ -26,5 +26,8 @@ WORKDIR /app
 # Copy the built fat JAR from the build container to the runtime container
 COPY --from=build /app/cli.jar /app/cli.jar
 
+RUN ls
+RUN ls -a
+
 # Set the entry point for the container
 ENTRYPOINT ["java", "-jar", "cli.jar"]
