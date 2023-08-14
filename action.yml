@@ -1,16 +1,13 @@
 # action.yml
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "FHIR CLI Docker"
+description: "Running Fhir helper CLI in docker action"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  type:
+    description: "The type command type"
     required: true
-    default: "World"
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
+    default: "test"
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.type }}
