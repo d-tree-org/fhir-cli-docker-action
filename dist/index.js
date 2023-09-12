@@ -53,7 +53,8 @@ function main() {
         `,
                     unique: core.getInput("unique") === "true",
                     number: github.context.payload.pull_request.number,
-                    repository: core.getInput("repository", { required: true }),
+                    owner: github.context.repo.owner,
+                    repo: github.context.repo.repo,
                     token: core.getInput("token", { required: true }),
                 };
                 const reposter = new repost_comment_1.Reposter(inputs);
@@ -119,9 +120,8 @@ class Reposter {
         this.number = inputs.number;
         this.comment = inputs.comment;
         this.unique = inputs.unique;
-        const [owner, repo] = inputs.repository.split("/");
-        this.owner = owner;
-        this.repo = repo;
+        this.owner = inputs.owner;
+        this.repo = inputs.repo;
         this.token = inputs.token;
     }
     repostComment() {

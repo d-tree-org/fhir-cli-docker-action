@@ -7,7 +7,8 @@ export interface Inputs {
   comment: string;
   unique: boolean;
   number: number;
-  repository: string;
+  owner: string;
+  repo: string;
   token: string;
 }
 
@@ -26,9 +27,8 @@ export class Reposter {
     this.comment = inputs.comment;
     this.unique = inputs.unique;
 
-    const [owner, repo] = inputs.repository.split("/");
-    this.owner = owner;
-    this.repo = repo;
+    this.owner = inputs.owner;
+    this.repo = inputs.repo;
     this.token = inputs.token;
   }
 

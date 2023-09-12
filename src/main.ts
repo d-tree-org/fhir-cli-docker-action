@@ -12,7 +12,8 @@ async function main(): Promise<void> {
         `,
         unique: core.getInput("unique") === "true",
         number: github.context.payload.pull_request.number,
-        repository: core.getInput("repository", { required: true }),
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
         token: core.getInput("token", { required: true }),
       };
 
